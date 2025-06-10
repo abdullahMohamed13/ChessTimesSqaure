@@ -1,7 +1,6 @@
-This is a free online chess clock with customizable time controls &amp; dashboard to track game results. Perfect for blitz, bullet, and classical chess.
-
 # ♟️ Chess Times Square ♟️
 **Where classic chess meets the glow of Times Square**.
+This is a free online chess clock with customizable time controls &amp; dashboard to track game results. Perfect for blitz, bullet, and classical chess.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Online-brightgreen)](https://abdullahMohamed13.github.io/chess-times-square)
