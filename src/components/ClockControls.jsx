@@ -14,8 +14,8 @@ import endGameSound from '../../src/assets/sounds/game-end.webm';
 import illegalSound from '../../src/assets/sounds/illegal.mp3';
 
 // Overlays
-const CountdownOverlay = lazy(() => import('./CountdownOverlay.jsx'));
-const GameOverOverlay = lazy(() => import('./GameOverOverlay.jsx'));
+const CountdownOverlay = lazy(() => import('../components/CountdownOverlay'));
+const GameOverOverlay = lazy(() => import('../components/GameOverOverlay'));
 
 export default function ClockControls({ cusTime, sPPos }) {
     // Contexts
