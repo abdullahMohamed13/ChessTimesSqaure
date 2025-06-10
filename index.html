@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon: Use absolute path and multiple formats -->
+    <link rel="icon" type="image/svg+xml" href="/website-logo.webp" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Early font connection (good!) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fixed FAQ Schema (missing closing brace for one Question) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the chess clock work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The chess clock alternates between two timers. Press the button after your move to switch to your opponent's timer. Customize time controls for blitz, bullet, or classical games."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I track my game history?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! The dashboard saves your game results, including wins, losses, and time usage. No login required—data is stored locally in your browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, it is completely free with no subscription needed."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Font loading (optimized to load only necessary weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=DM+Serif+Display&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Free online chess clock with customizable time controls & dashboard to track game results. Perfect for blitz, bullet, and classical chess." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <meta name="theme-color" content="#000000"> <!-- Default fallback -->
+    <script>
+      function updateThemeColor() {
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        const themeClass = document.documentElement.className;
+        
+        // First try CSS variable (if you prefer this approach)
+        try {
+          const cssColor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--player-card-bg').trim();
+          if (cssColor) {
+            metaTheme.content = cssColor;
+            return;
+          }
+        } catch (e) {}
+        
+        // Fallback to class-based colors
+        metaTheme.content = 
+          themeClass === 'originalLight' ? '#f6f6f6' :
+          themeClass === 'originalDark' ? '#121212' :
+          themeClass === 'majesticLight' ? '#f7f3ec' :
+          themeClass === 'majesticDark' ? '#252525' :
+          themeClass === 'retroLight' ? '#f0f0f0' :
+          themeClass === 'retroDark' ? '#222222' :
+          '#000000';
+      }
+
+      // Initial update
+      updateThemeColor();
+      
+      // Watch for changes (both class and attribute changes)
+      new MutationObserver(updateThemeColor)
+        .observe(document.documentElement, { 
+          attributes: true,
+          attributeFilter: ['class', 'style'] 
+        });
+    </script>
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://chesstimessquare.vercel.app" />
+
+    <!-- Social Meta (Fixed: Ensure image exists at the specified URL) -->
+    <meta property="og:title" content="Chess Times Square | Free Online Chess Clock">
+    <meta property="og:description" content="Track chess games with a customizable timer + dashboard. Perfect for blitz, bullet, and classical time controls.">
+    <meta property="og:image" content="https://chesstimessquare.vercel.app/website-logo.webp">
+    <meta property="og:url" content="https://chesstimessquare.vercel.app">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chess Times Square">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chess Times Square | Free Online Chess Clock">
+    <meta name="twitter:description" content="Track your chess games with our free timer and analytics dashboard.">
+    <meta name="twitter:image" content="https://chesstimessquare.vercel.app/website-logo.webp">
+
+    <title>Chess Times Square | Free Online Timer for Chess Players</title> <!-- More descriptive -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

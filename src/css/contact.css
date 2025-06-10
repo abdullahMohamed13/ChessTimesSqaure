@@ -1,0 +1,161 @@
+.contact-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--text-color);
+}
+
+.disclaimer,
+.lore {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.disclaimer h1,
+.lore h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.disclaimer p,
+.lore p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.highlight {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.challenge {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.challenge h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.chess-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.chess-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.chess-links a:hover {
+    transform: translateY(-3px);
+    background-color: var(--secondary-color);
+}
+
+.chess-links img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.contact-container {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.contact-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--player-card-bg);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.contact-item:hover {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    transform: translateY(-3px);
+}
+
+.icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.discord-item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy-message {
+    position: absolute;
+    left: 90%;
+    margin-left: 10px;
+    background: var(--secondary-color);
+    color: var(--card-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+    .contact-info {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .chess-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
