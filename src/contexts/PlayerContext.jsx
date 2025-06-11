@@ -5,8 +5,8 @@ const PlayerContext = createContext(null);
 
 export const PlayerProvider = ({children}) => {
     const [player, setPlayer] = useLocalStorage('playerStats', {
-        whitePlayer: { username: '', rating: 0, wins: 0, time: 0, chosenSite: '', avatar: ''},
-        blackPlayer: { username: '', rating: 0, wins: 0, time: 0, chosenSite: '', avatar: ''},
+        whitePlayer: { username: '', rating: '', wins: 0, time: 0, chosenSite: '', avatar: ''},
+        blackPlayer: { username: '', rating: '', wins: 0, time: 0, chosenSite: '', avatar: ''},
         draws: 0, increment: 0,
     });
 
