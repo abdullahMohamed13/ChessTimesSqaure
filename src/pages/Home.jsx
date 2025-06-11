@@ -124,7 +124,7 @@ export default function Home () {
                 <button className='highlight' onClick={scrollToCustomTCtrl}>custom timer</button> by setting the minutes, seconds and increment time for each move.
                 </li>
                 <li><span className="number">2.</span> 👤 (Optional) Enter your Chess.com or Lichess username to show off your rating & avatar.</li>
-                <li><span className="number">3.</span> ✅ Hit <b className="highlight">Start</b>, make your move, and press <b className="highlight">Switch</b> to pass the clock.</li>
+                <li><span className="number">3.</span> ✅ Hit <b className="highlight">Start ►</b>, make your move, and press <b className="highlight">Switch ⇄</b> to pass the clock.</li>
                 <li><span className="number">4.</span> 🔇 Mute or unmute sounds with the speaker icon. Your game, your vibe.</li>
                 <li><span className="number">5.</span> 📊 After the match, head to the<Link to="/dashboard"
                     style={{ cursor: 'pointer', textDecoration: 'underline'}}> <b className="highlight">Dashboard</b>
@@ -263,25 +263,46 @@ export default function Home () {
                     timeControl === 'bullet' ? <p className='time-control-icon bullet'>💥</p> : ''
                 }
             </h3>}
-            <div className="players-cards">
-                <>
-                    <div className={getPlayerClass(topPlayerId)}>
-                        {playerPosition ? whiteCard : blackCard}
-                    </div>
-                    <Button cName='switch-player' onClick={() => disableBtnsCondition(switchPlayers)}
-                        ariaLabel="Switch player positions" style={disabledBtnsStyle}/>
-                    <div className={getPlayerClass(bottomPlayerId)}>
-                        {playerPosition ? blackCard : whiteCard}
-                    </div>
-                </>
-            </div>
+
+
+        <div className="players-cards">
+            <>
+                <div className={getPlayerClass(topPlayerId)}>
+                    {playerPosition ? whiteCard : blackCard}
+                </div>
+
+                {/* ClockControls for mobile view */}
+                <div className="mobile-clock-controls">
+                    <ClockControls
+                        tControl={timeControl} sTControl={setTimeControl}
+                        setTime={setTime} cusTime={finalCustomTime}
+                        sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
+                    />
+                </div>
+
+                <Button
+                    className="switch-player"
+                    onClick={() => disableBtnsCondition(switchPlayers)}
+                    ariaLabel="Switch player positions"
+                    style={disabledBtnsStyle}
+                />
+
+                <div className={getPlayerClass(bottomPlayerId)}>
+                    {playerPosition ? blackCard : whiteCard}
+                </div>
+            </>
+        </div>
+
         </div>
         
-        <ClockControls
-            tControl={timeControl} sTControl={setTimeControl}
-            setTime={setTime} cusTime={finalCustomTime}
-            sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
-        />
+        {/* ClockControls for desktop view */}
+        <div className="desktop-clock-controls">
+            <ClockControls
+                tControl={timeControl} sTControl={setTimeControl}
+                setTime={setTime} cusTime={finalCustomTime}
+                sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
+            />
+        </div>
     </div>
     </>
 }

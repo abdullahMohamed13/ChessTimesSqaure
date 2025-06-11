@@ -1,8 +1,7 @@
 :root {
     --margin: 13px;
-    --small-screen-margin: 5px;
+    --small-screen-margin: 3px;
 }
-
 
 .player-card {
     background-color: var(--player-card-bg);
@@ -128,6 +127,20 @@
 }
 
 @media (max-width: 768px) {
+    .player-card {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 15px;
+    }
+    .players-cards-container {
+      min-height: 100vh;
+    }
+
+  .players-cards {
+    gap: 6px;
+    flex-direction: column;
+  }
+
   .player-card p.white-black,
   .player-card .player-stats input[type="text"],
   .player-card .player-stats .btns,

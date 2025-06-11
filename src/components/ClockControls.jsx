@@ -8,10 +8,12 @@ import PlayerContext from '../contexts/PlayerContext';
 import Button from './Button';
 // Sounds
 import { useSound } from "../contexts/SoundContext";
-
 // Overlays
 const CountdownOverlay = lazy(() => import('./CountdownOverlay'));
 const GameOverOverlay = lazy(() => import('./GameOverOverlay'));
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPause, faPlay, faCirclePlay, faRightLeft, faArrowRotateLeft, faFlagCheckered, } from '@fortawesome/free-solid-svg-icons';
 
 export default function ClockControls({ cusTime, sPPos }) {
     // Contexts
@@ -219,19 +221,19 @@ export default function ClockControls({ cusTime, sPPos }) {
             <div className="controls">
                 {isRunning ?
                     <>
-                        <Button cName='pause' onClick={pauseClock} ariaLabel='Pause Clock'
-                        text={paused ? 'Resume' : 'Pause'}/>
+                        <Button cName='pause' onClick={pauseClock} ariaLabel='Pause Clock' title={paused ? 'Resume' : 'Pause'}
+                        text={paused ? <FontAwesomeIcon icon={faPlay} /> : <FontAwesomeIcon icon={faPause} />}/>
                         <Button cName='reset' onClick={() => {playSound('/sounds/game-end.webm'); endMatch()}} ariaLabel='End Match'
-                        text='End Match'/>
+                        text={<FontAwesomeIcon icon={faFlagCheckered} />} title="End Game"/>
                         <Button cName='switch' onClick={() => {playSound('/sounds/switch.mp3'); switchPlayer()}} ariaLabel='Switch Move'
-                        text='Switch'/>
+                        text={<FontAwesomeIcon icon={faRightLeft} />} title="Switch Turns"/>
                     </> : 
                     <>
-                        <Button cName='start' onClick={handleStartClick} ariaLabel='Start Clock'
-                        text='Start'/>
+                        <Button cName='start' onClick={handleStartClick} ariaLabel='Start Clock' title='Start Clock'
+                        text={<FontAwesomeIcon icon={faCirclePlay} />}/>
 
-                        <Button cName='reset' onClick={resetClock} ariaLabel='Reset Clock'
-                        text='Reset'/>
+                        <Button cName='reset' onClick={resetClock} ariaLabel='Reset Clock' title='Reset Clock'
+                        text={<FontAwesomeIcon icon={faArrowRotateLeft} />}/>
                     </>
                 }
             </div>
