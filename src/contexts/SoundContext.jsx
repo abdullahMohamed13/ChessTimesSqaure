@@ -7,16 +7,14 @@ export const SoundProvider = ({ children }) => {
 
     const toggleSound = () => setMuted(prev => !prev);
 
-    const playSound = async (soundKey) => {
-        if(!muted && soundKey) {
-            const soundModule = await import(/* @vite-ignore */ soundKey);
-            const audio = new Audio(soundModule.default);
+    const playSound = (soundPath) => {
+        if (!muted && soundPath) {
+            const audio = new Audio(soundPath);
+            audio.volume = 0.8;
             audio.play().catch((e) => {
                 console.warn('Playback failed:', e);
             });
-            // audio.volume = 0.4;
         }
-        return
     };
 
     return (
