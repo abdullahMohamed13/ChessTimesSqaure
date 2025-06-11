@@ -8,10 +8,6 @@ import PlayerContext from '../contexts/PlayerContext';
 import Button from './Button';
 // Sounds
 import { useSound } from "../contexts/SoundContext";
-import switchSound from '../../src/assets/sounds/switch.mp3';
-import startGameSound from '../../src/assets/sounds/game-start.mp3';
-import endGameSound from '../../src/assets/sounds/game-end.webm';
-import illegalSound from '../../src/assets/sounds/illegal.mp3';
 
 // Overlays
 const CountdownOverlay = lazy(() => import('./CountdownOverlay'));
@@ -176,12 +172,12 @@ export default function ClockControls({ cusTime, sPPos }) {
 
     const handleStartClick = () => {
         if (intervalRef.current !== null || !timeControl) {
-            playSound(illegalSound);
+            playSound('/sounds/illegal.mp3');
             return;
         }
         
         setShowCountdown(true);
-        playSound(startGameSound);
+        playSound('/sounds/game-start.mp3');
     }
 
     const whiteKeys = ['q', 'w', 'e', 'a', 's', 'd'];
@@ -194,18 +190,18 @@ export default function ClockControls({ cusTime, sPPos }) {
             if (key === ' ') {
                 event.preventDefault(); // Prevent space bar scrolling
                 switchPlayer();
-                playSound(switchSound)
+                playSound('/sounds/switch.mp3')
                 return;
             }
 
             if (activePlayerRef.current === 'whitePlayer' && whiteKeys.includes(key)) {
                 switchPlayer();
-                playSound(switchSound)
+                playSound('/sounds/switch.mp3')
             }
 
             if (activePlayerRef.current === 'blackPlayer' && blackKeys.includes(key)) {
                 switchPlayer();
-                playSound(switchSound)
+                playSound('/sounds/switch.mp3')
             }
         };
 
@@ -225,9 +221,9 @@ export default function ClockControls({ cusTime, sPPos }) {
                     <>
                         <Button cName='pause' onClick={pauseClock} ariaLabel='Pause Clock'
                         text={paused ? 'Resume' : 'Pause'}/>
-                        <Button cName='reset' onClick={() => {playSound(endGameSound); endMatch()}} ariaLabel='End Match'
+                        <Button cName='reset' onClick={() => {playSound('/sounds/game-end.webm'); endMatch()}} ariaLabel='End Match'
                         text='End Match'/>
-                        <Button cName='switch' onClick={() => {playSound(switchSound); switchPlayer()}} ariaLabel='Switch Move'
+                        <Button cName='switch' onClick={() => {playSound('/sounds/switch.mp3'); switchPlayer()}} ariaLabel='Switch Move'
                         text='Switch'/>
                     </> : 
                     <>

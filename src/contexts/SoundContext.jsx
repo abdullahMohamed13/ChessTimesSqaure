@@ -11,7 +11,9 @@ export const SoundProvider = ({ children }) => {
         if(!muted && soundKey) {
             const soundModule = await import(/* @vite-ignore */ soundKey);
             const audio = new Audio(soundModule.default);
-            audio.play();
+            audio.play().catch((e) => {
+                console.warn('Playback failed:', e);
+            });
             // audio.volume = 0.4;
         }
         return

@@ -25,6 +25,10 @@ export default function Contact() {
                         <span className="highlight">Note:</span> Player data is sourced from public APIs and displayed 
                         without warranty of accuracy. All trademarks belong to their respective owners.
                     </p>
+                    <p>
+                        Website logo from: [<a className="highlight" href="https://www.behance.net/kangcemuk" target="_target" title="Go To Behance.net">
+                        kang cemuk</a>].
+                    </p>
                 </div>
 
                 <div className='lore'>
