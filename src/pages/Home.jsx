@@ -280,16 +280,17 @@ export default function Home () {
                     />
                 </div>
 
+
+                <div className={getPlayerClass(bottomPlayerId)}>
+                    {playerPosition ? blackCard : whiteCard}
+                </div>
+                
                 <Button
                     className="switch-player"
                     onClick={() => disableBtnsCondition(switchPlayers)}
                     ariaLabel="Switch player positions"
                     style={disabledBtnsStyle}
                 />
-
-                <div className={getPlayerClass(bottomPlayerId)}>
-                    {playerPosition ? blackCard : whiteCard}
-                </div>
             </>
         </div>
 

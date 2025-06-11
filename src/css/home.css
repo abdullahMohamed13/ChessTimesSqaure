@@ -462,6 +462,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 @media (max-width: 768px) {
+
   .mobile-clock-controls {
     display: block;
     width: 100%;
@@ -469,6 +470,10 @@ input[type='number']::-webkit-outer-spin-button {
 
   .desktop-clock-controls {
     display: none;
+  }
+
+  .players-cards-container {
+    margin-bottom: 0;
   }
     
   .landing {
@@ -510,13 +515,11 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   .switch-player {
-    position: absolute;
-    right: -25.2px;
-    top: -3px;
-    width: 33px;
-    height: 33px;
-    font-size: 1rem;
-    margin: 0 8px;
+    margin: 5px 0 0;
+    padding: 6px 8px;
+    font-size: 1.2rem;
+    width: 45px;
+    height: 40px;
   }
 
   .switch-player:hover:not(:disabled)::after {
