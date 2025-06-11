@@ -33,7 +33,7 @@ export default function Contact() {
 
                 <div className='lore'>
                     <h1>🧙 Lore</h1>
-                    <p>{`While playing chess with my dad, we did'nt have a clock - so I said why not make one <3`}</p>
+                    <p>{`While playing chess with my dad, we didn't have a clock - so I said why not make one <3`}</p>
                 </div>
 
                 <div className="challenge">
