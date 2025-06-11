@@ -264,39 +264,53 @@ export default function Home () {
                 }
             </h3>}
 
+            <div className="players-cards desktop-edition">
+                <>
+                    <div className={getPlayerClass(topPlayerId)}>
+                        {playerPosition ? whiteCard : blackCard}
+                    </div>
 
-        <div className="players-cards">
-            <>
-                <div className={getPlayerClass(topPlayerId)}>
-                    {playerPosition ? whiteCard : blackCard}
-                </div>
+                    <Button
+                        className="switch-player"
+                        onClick={() => disableBtnsCondition(switchPlayers)}
+                        ariaLabel="Switch player positions"
+                        style={disabledBtnsStyle}
+                    />
 
-                {/* ClockControls for mobile view */}
-                <div className="mobile-clock-controls">
+                    <div className={getPlayerClass(bottomPlayerId)}>
+                        {playerPosition ? blackCard : whiteCard}
+                    </div>
+
+                </>
+            </div>
+
+            <div className="players-cards mobile-edition">
+                <>
+                    <div className={getPlayerClass(topPlayerId)}>
+                        {playerPosition ? whiteCard : blackCard}
+                    </div>
+
                     <ClockControls
                         tControl={timeControl} sTControl={setTimeControl}
                         setTime={setTime} cusTime={finalCustomTime}
                         sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
                     />
-                </div>
 
+                    <div className={getPlayerClass(bottomPlayerId)}>
+                        {playerPosition ? blackCard : whiteCard}
+                    </div>
 
-                <div className={getPlayerClass(bottomPlayerId)}>
-                    {playerPosition ? blackCard : whiteCard}
-                </div>
-                
-                <Button
-                    className="switch-player"
-                    onClick={() => disableBtnsCondition(switchPlayers)}
-                    ariaLabel="Switch player positions"
-                    style={disabledBtnsStyle}
-                />
-            </>
-        </div>
+                    <Button
+                        className="switch-player"
+                        onClick={() => disableBtnsCondition(switchPlayers)}
+                        ariaLabel="Switch player positions"
+                        style={disabledBtnsStyle}
+                    />
+                </>
+            </div>
 
         </div>
         
-        {/* ClockControls for desktop view */}
         <div className="desktop-clock-controls">
             <ClockControls
                 tControl={timeControl} sTControl={setTimeControl}
