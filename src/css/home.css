@@ -444,10 +444,6 @@ input[type='number']::-webkit-outer-spin-button {
   display: none;
 }
 
-.desktop-clock-controls {
-  display: block;
-}
-
 @media (max-width: 768px) {
 
   .container {
@@ -456,10 +452,6 @@ input[type='number']::-webkit-outer-spin-button {
   .mobile-clock-controls {
     display: block;
     width: 100%;
-  }
-
-  .desktop-clock-controls {
-    display: none;
   }
 
   .players-cards-container {
@@ -528,7 +520,8 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   .chosen-time-control {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin: 5px 0 25px;
   }
 }
 
