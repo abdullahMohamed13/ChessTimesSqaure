@@ -6,16 +6,18 @@ import GameContext from "../contexts/GameContext";
 import PlayerContext from '../contexts/PlayerContext';
 // Custom Components
 import Button from './Button';
-// Sounds
-import { useSound } from "../contexts/SoundContext";
 // Overlays
 const CountdownOverlay = lazy(() => import('./CountdownOverlay'));
 const GameOverOverlay = lazy(() => import('./GameOverOverlay'));
-
+// Custom Hooks
+import useMediaQuery from '../hooks/useMediaQuery';
+import { useSound } from "../contexts/SoundContext";
+// Libraries
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay, faCirclePlay, faRightLeft, faArrowRotateLeft, faFlagCheckered, } from '@fortawesome/free-solid-svg-icons';
 
 export default function ClockControls({ cusTime, sPPos }) {
+    const isMobile = useMediaQuery('(max-width: 768px)')
     // Contexts
     const {time, isRunning, setIsRunning, timeControl, setTimeControl} = useContext(GameContext)
     const { player, setPlayer, activePlayer, setActivePlayer } = useContext(PlayerContext);
@@ -237,7 +239,7 @@ export default function ClockControls({ cusTime, sPPos }) {
                     </>
                 }
             </div>
-            <div className="clock-keys">
+            {!isMobile && <div className="clock-keys">
                 <p>
                     ⌨️ <strong>Shortcuts:</strong> Either player can press the <span className="highlight">Space</span>
                     key to switch turns.
@@ -256,6 +258,6 @@ export default function ClockControls({ cusTime, sPPos }) {
                         <span className="highlight" key={key}>{key.toUpperCase()}</span>
                     ))}
                 </p>
-            </div>
+            </div>}
         </>
 }
