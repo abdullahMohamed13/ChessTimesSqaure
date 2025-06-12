@@ -185,7 +185,7 @@ export default function Home () {
                 <h3>Bullet</h3>
                 <Button text='2 | 1' data-time="120" cName='bullet' ariaLabel="Select 2-minutes bullet game with 1-second bonus"
                     onClick={handleTimeCtrlClick} style={disabledBtnsStyle} data-bonus-time='1' />
-                <Button text='1 min' data-time="60" cName='blitz' ariaLabel="Select 1-minute bullet game"
+                <Button text='1 min' data-time="60" cName='bullet' ariaLabel="Select 1-minute bullet game"
                     onClick={handleTimeCtrlClick} style={disabledBtnsStyle} />
 
                 {showAllTimeControls && (
@@ -264,60 +264,29 @@ export default function Home () {
                 }
             </h3>}
 
-            <div className="players-cards desktop-edition">
-                <>
-                    <div className={getPlayerClass(topPlayerId)}>
-                        {playerPosition ? whiteCard : blackCard}
-                    </div>
+            <div className="players-cards">
+                <div className={getPlayerClass(topPlayerId)}>
+                    {playerPosition ? whiteCard : blackCard}
+                </div>
 
-                    <Button
-                        className="switch-player"
-                        onClick={() => disableBtnsCondition(switchPlayers)}
-                        ariaLabel="Switch player positions"
-                        style={disabledBtnsStyle}
-                    />
-
-                    <div className={getPlayerClass(bottomPlayerId)}>
-                        {playerPosition ? blackCard : whiteCard}
-                    </div>
-
-                </>
+                <Button
+                    className="switch-player"
+                    onClick={() => disableBtnsCondition(switchPlayers)}
+                    ariaLabel="Switch player positions"
+                    style={disabledBtnsStyle}
+                />
+                
+                <div className={getPlayerClass(bottomPlayerId)}>
+                    {playerPosition ? blackCard : whiteCard}
+                </div>
             </div>
-
-            <div className="players-cards mobile-edition">
-                <>
-                    <div className={getPlayerClass(topPlayerId)}>
-                        {playerPosition ? whiteCard : blackCard}
-                    </div>
-
-                    <ClockControls
-                        tControl={timeControl} sTControl={setTimeControl}
-                        setTime={setTime} cusTime={finalCustomTime}
-                        sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
-                    />
-
-                    <div className={getPlayerClass(bottomPlayerId)}>
-                        {playerPosition ? blackCard : whiteCard}
-                    </div>
-
-                    <Button
-                        className="switch-player"
-                        onClick={() => disableBtnsCondition(switchPlayers)}
-                        ariaLabel="Switch player positions"
-                        style={disabledBtnsStyle}
-                    />
-                </>
-            </div>
-
         </div>
         
-        <div className="desktop-clock-controls">
             <ClockControls
                 tControl={timeControl} sTControl={setTimeControl}
                 setTime={setTime} cusTime={finalCustomTime}
                 sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
             />
-        </div>
     </div>
     </>
 }
