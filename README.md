@@ -1,7 +1,7 @@
 # ♟️ Chess Times Square ♟️
 **Where classic chess meets the glow of Times Square**.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) -->
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Online-brightgreen)](https://abdullahMohamed13.github.io/chess-times-square)
 [![Last Commit](https://img.shields.io/github/last-commit/abdullahMohamed13/ChessTimesSquare)](https://github.com/abdullahMohamed13/ChessTimesSquare)
 <!--![Chess Times Square Screenshot](./assets/screenshot.png) -->
