@@ -12,12 +12,6 @@ export default function useLocalStorage(key, initialVal) {
     });
 
     useEffect(() => {
-    if (storedVal !== undefined) {
-        localStorage.setItem(key, JSON.stringify(storedVal));
-    }
-    }, [key, storedVal]);
-
-    useEffect(() => {
         try {
             localStorage.setItem(key, JSON.stringify(storedVal));
         } catch (err) {

@@ -38,9 +38,6 @@ export default function usePlayerInfo(playerKey, username, playerSite, timeContr
                 Axios.get(`${profileURL}/stats`),
                 Axios.get(profileURL)
             ]).then(([statsRes, profileRes]) => {
-                console.log(`statsRes`, statsRes.data);
-                console.log(`profileRes` ,profileRes.data);
-                
                 const key = timeControl === 'classical' ? 'fide' : `chess_${timeControl}`;
                 const dataStats = statsRes.data[key];
                 const rating = dataStats?.last?.rating;
