@@ -11,6 +11,7 @@ import PlayerCard from '../components/PlayerCard';
 import Button from '../components/Button';
 // Custom Hooks
 import useCustomTimeControl from '../hooks/useCustomTimeControl';
+import useMediaQuery from '../hooks/useMediaQuery';
 // FontAwesome Library
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeHigh, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
@@ -38,6 +39,7 @@ export default function Home () {
     // Custom Hooks
     const {muted, toggleSound} = useSound()
     const {finalCustomTime, handleTimeChange} = useCustomTimeControl(setIsCustomTime, isRunning, setTimeControl);
+    const isMobile = useMediaQuery('(max-width: 768px)')
 
     // Function and Handlers:
     const getTime = (e) => {
@@ -269,24 +271,35 @@ export default function Home () {
                     {playerPosition ? whiteCard : blackCard}
                 </div>
 
-                <Button
+                {isMobile && <ClockControls
+                tControl={timeControl} sTControl={setTimeControl}
+                setTime={setTime} cusTime={finalCustomTime}
+                sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}/>}
+                
+                {!isMobile && <Button
                     className="switch-player"
                     onClick={() => disableBtnsCondition(switchPlayers)}
                     ariaLabel="Switch player positions"
                     style={disabledBtnsStyle}
-                />
+                />}
                 
                 <div className={getPlayerClass(bottomPlayerId)}>
                     {playerPosition ? blackCard : whiteCard}
                 </div>
+
+                {isMobile &&  <Button
+                    className="switch-player"
+                    onClick={() => disableBtnsCondition(switchPlayers)}
+                    ariaLabel="Switch player positions"
+                    style={disabledBtnsStyle}/>}
             </div>
         </div>
         
-            <ClockControls
+            {!isMobile && <ClockControls
                 tControl={timeControl} sTControl={setTimeControl}
                 setTime={setTime} cusTime={finalCustomTime}
                 sPPos={setPlayerPosition} running={isRunning} stRunning={setIsRunning}
-            />
+            />}
     </div>
     </>
 }
