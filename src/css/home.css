@@ -320,7 +320,8 @@ html {
 
 .players-cards-container .sound-icon {
   position: absolute;
-  font-size: 20px;
+  font-size: 22px;
+  top: 10px;
   left: 10px;
   cursor: pointer;
   z-index: 1000;
@@ -352,8 +353,8 @@ html {
 
 .time-control-icon {
   position: absolute;
-  right: -0.9rem;
-  top: 10%;
+  right: -1.2rem;
+  top: -78%;
   transform: translateY(-50%) rotate(0deg);
   font-size: 1.2em;
   color: var(--secondary-color);

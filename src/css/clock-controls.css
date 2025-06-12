@@ -39,9 +39,6 @@
 }
 
 @media (max-width: 768px) {
-  .clock-keys {
-    display: none;
-  }
   .controls {
     margin: 7px 0;
   }
