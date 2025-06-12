@@ -115,24 +115,39 @@ export default function PlayerCard({ isWhite, isCustomTime}){
 
         <div className="player-stats">
             <div className="websites-logos">
-                <img src="../../chess.com.svg" alt="Chess.com Logo"
-                    className={`chess-com-logo ${playerSite === 'chess.com' ? 'selected-site' : ''}`}
-                    onClick={(e) => isRunning ? e.preventDefault() : handleSiteSelection('chess.com')}
-                />
-                <img src="../../lichess.svg" alt="lichess Logo"
-                    className={`lichess-logo ${playerSite === 'lichess' ? 'selected-site' : ''}`}
-                    onClick={(e) => isRunning ? e.preventDefault() : handleSiteSelection('lichess')}
-                />
+                {(!isRunning || rating) && (
+                    isRunning ? (
+                        <img
+                            src={`../../${playerSite}.svg`}
+                            alt={`${playerSite} Logo`}
+                            className="selected-site"
+                        />
+                    ) : (
+                        <>
+                            <img
+                                src="../../chess.com.svg"
+                                alt="Chess.com Logo"
+                                className={`chess-com-logo ${playerSite === 'chess.com' ? 'selected-site' : ''}`}
+                                onClick={() => handleSiteSelection('chess.com')}
+                            />
+                            <img
+                                src="../../lichess.svg"
+                                alt="Lichess Logo"
+                                className={`lichess-logo ${playerSite === 'lichess' ? 'selected-site' : ''}`}
+                                onClick={() => handleSiteSelection('lichess')}
+                            />
+                        </>
+                    )
+                )}
             </div>
 
-            <input  
+
+            {!isRunning && <input  
                 type="text"
-                className={isRunning ? 'disable-on-focus' : ''}
-                style={isRunning ? {opacity: '0.5', cursor: 'not-allowed'} : {}}
                 value={username}
-                onChange={(e) => isRunning ? e.preventDefault() : handleUsernameChange(e)}
+                onChange={(e) => handleUsernameChange(e)}
                 placeholder='Enter your username'
-            />
+            />}
 
             {((isWhite ? showWhiteRating : showBlackRating) && rating) && (
                 <p className='rating'>
@@ -144,12 +159,13 @@ export default function PlayerCard({ isWhite, isCustomTime}){
             )}
 
             <div className="btns">
-                <Button text={loading ? 'loading...' : 'Get Rating'} style={isRunning ? {cursor: 'not-allowed', opacity: 0.5} : {}}
-                disabled={loading} ariaLabel="Get Player Data" onClick={(e) => isRunning ? e.preventDefault() : fetchPlayerData()}/>
+                {!isRunning && <>
+                    <Button text={loading ? 'loading...' : 'Get Rating'} disabled={loading} ariaLabel="Get Player Data"
+                    onClick={fetchPlayerData}/>
 
-                <Button text={isWhite && showWhiteRating ? `Hide Rating` : !isWhite && showBlackRating ? `Hide Rating` : `Hidden`}
-                    ariaLabel="Hide Player Rating" onClick={() => hideRating(isWhite)}/>
-                    
+                    <Button text={isWhite && showWhiteRating ? `Hide Rating` : !isWhite && showBlackRating ? `Hide Rating` : `Hidden`}
+                        ariaLabel="Hide Player Rating" onClick={() => hideRating(isWhite)}/>
+                </>}
             </div>
         </div>
     </div>
